@@ -1,12 +1,30 @@
 import { useState, useEffect } from 'react';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 
 // Components
 import Navbar from './components/Navbar';
 
+// Pages
+import Home from './pages/Home';
+import Action from './pages/Action';
+import Comedy from './pages/Comedy';
+import Crime from './pages/Crime';
+import Drama from './pages/Drama';
+import Horror from './pages/Horror';
+import Romance from './pages/Romance';
+import MyWatchlist from './pages/MyWatchlist';
+import PageNotFound from './pages/PageNotFound';
+
 function App() {
+  const [navActive, setNavActive] = useState(false);
 
   useEffect(() => {
     getTVData();
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768 && navActive) {
+        closeNav();
+      }
+    })
   })
 
   const comedies = [];
@@ -34,10 +52,29 @@ function App() {
     }
   }
 
+  function toggleNav() {
+    setNavActive(!navActive);
+  }
+
+  function closeNav() {
+    setNavActive(false);
+  }
+
   return (
-    <div> 
-      <Navbar />
-    </div>
+    <HashRouter>
+      <Navbar toggleNav={toggleNav} navActive={navActive} closeNav={closeNav}/>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='action' element={<Action />} />
+        <Route path='comedy' element={<Comedy />} />
+        <Route path='crime' element={<Crime />} />
+        <Route path='drama' element={<Drama />} />
+        <Route path='horror' element={<Horror />} />
+        <Route path='romance' element={<Romance />} />
+        <Route path='mywatchlist' element={<MyWatchlist />} />
+        <Route path='*' element={<PageNotFound />} />
+      </Routes>
+    </HashRouter>
   );
 }
 
