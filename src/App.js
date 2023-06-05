@@ -17,12 +17,16 @@ import PageNotFound from './pages/PageNotFound';
 
 function App() {
   const [navActive, setNavActive] = useState(false);
+  const [inputActive, setInputActive] = useState(false);
 
   useEffect(() => {
     getTVData();
     window.addEventListener('resize', function() {
       if (window.innerWidth > 768 && navActive) {
         closeNav();
+      }
+      if (window.innerWidth > 768 && inputActive) {
+        closeInput();
       }
     })
   })
@@ -60,9 +64,17 @@ function App() {
     setNavActive(false);
   }
 
+  function toggleInput() {
+    setInputActive(!inputActive);
+  }
+
+  function closeInput() {
+    setInputActive(false);
+  }
+
   return (
     <HashRouter>
-      <Navbar toggleNav={toggleNav} navActive={navActive} closeNav={closeNav}/>
+      <Navbar toggleNav={toggleNav} navActive={navActive} closeNav={closeNav} toggleInput={toggleInput} inputActive={inputActive} closeInput={closeInput} />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='action' element={<Action />} />
