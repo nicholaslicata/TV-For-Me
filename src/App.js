@@ -22,10 +22,10 @@ function App() {
   useEffect(() => {
     getTVData();
     window.addEventListener('resize', function() {
-      if (window.innerWidth > 768 && navActive) {
+      if (window.innerWidth > 1024 && navActive) {
         closeNav();
       }
-      if (window.innerWidth > 768 && inputActive) {
+      if (window.innerWidth > 1024 && inputActive) {
         closeInput();
       }
     })
