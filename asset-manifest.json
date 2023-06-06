@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/TV-For-Me/static/css/main.fc182563.css",
+    "main.js": "/TV-For-Me/static/js/main.4b9277b0.js",
+    "index.html": "/TV-For-Me/index.html",
+    "main.fc182563.css.map": "/TV-For-Me/static/css/main.fc182563.css.map",
+    "main.4b9277b0.js.map": "/TV-For-Me/static/js/main.4b9277b0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fc182563.css",
+    "static/js/main.4b9277b0.js"
+  ]
+}
