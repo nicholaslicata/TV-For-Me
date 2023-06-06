@@ -1,5 +1,5 @@
  import { Link } from 'react-router-dom';
- import { FaSearch } from 'react-icons/fa'
+ import { FaSearch, FaTv } from 'react-icons/fa'
 
 function Navbar({ toggleNav, navActive, closeNav, toggleInput, inputActive, closeInput  }) {
     return (
@@ -10,13 +10,14 @@ function Navbar({ toggleNav, navActive, closeNav, toggleInput, inputActive, clos
                 <span className='hamburger-line'></span>
             </div>
             <div className='logo-container'>
+                <FaTv className='tv' />
                 <Link onClick={closeNav} className='logo' to='/'>TV For Me</Link>
             </div>
             <button onClick={toggleInput} className='search-btn'>
                 <FaSearch />
             </button>
             <div className={inputActive ? 'input-active' : 'input-container'}>
-                <input className='nav-input' type='text' placeholder='Search for shows' required></input>
+                <input className='nav-input' type='text' placeholder='Search for shows...' required></input>
             </div>
             <nav className={navActive ? 'nav-active' : 'nav'}>
                 <Link onClick={closeNav} className='nav-link' to='action'>Action</Link>
