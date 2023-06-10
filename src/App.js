@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes, } from 'react-router-dom';
 
 // Components
 import Navbar from './components/Navbar';
@@ -13,14 +13,19 @@ import Drama from './pages/Drama';
 import Horror from './pages/Horror';
 import Romance from './pages/Romance';
 import MyWatchlist from './pages/MyWatchlist';
+import TvShow from './pages/TvShow';
+import Person from './pages/Person';
 import PageNotFound from './pages/PageNotFound';
 
 function App() {
   const [navActive, setNavActive] = useState(false);
   const [inputActive, setInputActive] = useState(false);
+  const [showDetails, setShowDetails] = useState({
+    name: '',
+    img: '',
+  });
 
   useEffect(() => {
-    getTVData();
     window.addEventListener('resize', function() {
       if (window.innerWidth > 1024 && navActive) {
         closeNav();
@@ -29,32 +34,7 @@ function App() {
         closeInput();
       }
     })
-  })
-
-  const comedies = [];
-
-  async function getTVData() {
-    const randomNumber = Math.random() * 50;
-    const wholeNumber = Math.floor(randomNumber);
-    const api = `https://api.tvmaze.com/shows`
-    // console.log(randomNumber);
-    // console.log(wholeNumber);
-
-    
-     try {
-      const response = await fetch(api);
-      const data = await response.json();
-      // console.log(data);
-      // data.forEach((d) => {
-      //   if (d.genres.includes('Romance')) {
-      //     comedies.push(d);
-      //     console.log(d.name);
-      //   }
-      // })
-    } catch(err) {
-      console.log(err);
-    }
-  }
+  }, [])
 
   function toggleNav() {
     setNavActive(!navActive);
@@ -76,7 +56,11 @@ function App() {
     <HashRouter>
       <Navbar toggleNav={toggleNav} navActive={navActive} closeNav={closeNav} toggleInput={toggleInput} inputActive={inputActive} closeInput={closeInput} />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/'>
+          <Route index element={<Home showDetails={showDetails} setShowDetails={setShowDetails} />} />
+          <Route path='/show:id' element={<TvShow showDetails={showDetails} />} />
+          <Route path='/person' element={<Person />} />
+        </Route>
         <Route path='action' element={<Action />} />
         <Route path='comedy' element={<Comedy />} />
         <Route path='crime' element={<Crime />} />
