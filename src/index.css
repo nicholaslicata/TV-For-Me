@@ -63,6 +63,10 @@ html, body {
     color: #fde047
 }
 
+.nav-link:hover {
+    color: white;
+}
+
 .logo-container {
     display: flex;
     align-items: center;
@@ -157,6 +161,10 @@ html, body {
     cursor: pointer;
 }
 
+/* Home */
+
+
+
 /* Media Queries */
 
 @media screen and (min-height: 300px) and (max-height: 450px) {
@@ -231,6 +239,10 @@ html, body {
         height: auto;
         order: 3;
     } 
+
+    .nav-input {
+        margin-bottom: 0.5em;
+    }
 
     .hamburger-btn {
         display: none;
