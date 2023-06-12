@@ -161,9 +161,106 @@ html, body {
     cursor: pointer;
 }
 
-/* Home */
+/* Shows */
 
+.home-container {
+    height: 90vh;
+    width: 100%;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-around; */
+    border: 3px solid purple;
+}
 
+.discover-shows-container {
+    width: 100%;
+    justify-content: center;
+    border: 1px solid yellow;
+}
+
+.discover-shows {
+    font-size: 1rem;
+    letter-spacing: 0.8px;
+    color: white;
+    text-align: center;
+}
+
+.shows-carousel-container {
+    border: 1px solid red;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.show-card {
+    /* width: 30%; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 5px;
+    border: 1px solid blue;
+}
+
+.show-card-img {
+    width: 100%;
+    height: 200px;
+}
+
+.show-card-name {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #fde047;
+    letter-spacing: 0.8px;
+}
+
+/* People */
+
+.discover-people-container {
+    width: 100%;
+    justify-content: center;
+    border: 1px solid yellow;
+}
+
+.discover-people {
+    font-size: 1rem;
+    letter-spacing: 0.8px;
+    color: white;
+    text-align: center;
+}
+
+.people-carousel-container {
+    border: 1px solid red;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.person-card {
+    /* width: 30%; */
+    padding: 0.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 5px;
+    border: 1px solid blue;
+}
+
+.person-card-img {
+    width: 100%;
+    height: 200px;
+}
+
+.person-card-name {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #fde047;
+    letter-spacing: 0.8px;
+}
+
+.discover-people {
+    font-size: 1rem;
+    letter-spacing: 0.8px;
+    color: white;
+    text-align: center;
+}
 
 /* Media Queries */
 
