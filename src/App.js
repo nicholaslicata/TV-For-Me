@@ -23,7 +23,13 @@ function App() {
   const [showDetails, setShowDetails] = useState({
     name: '',
     img: '',
+    id: '',
   });
+  const [personDetails, setPersonDetails] = useState({
+    name: '', 
+    img: '',
+    id: '',
+  })
 
   useEffect(() => {
     window.addEventListener('resize', function() {
@@ -57,9 +63,9 @@ function App() {
       <Navbar toggleNav={toggleNav} navActive={navActive} closeNav={closeNav} toggleInput={toggleInput} inputActive={inputActive} closeInput={closeInput} />
       <Routes>
         <Route path='/'>
-          <Route index element={<Home showDetails={showDetails} setShowDetails={setShowDetails} />} />
-          <Route path='/show:id' element={<TvShow showDetails={showDetails} />} />
-          <Route path='/person' element={<Person />} />
+          <Route index element={<Home showDetails={showDetails} setShowDetails={setShowDetails} personDetails={personDetails} setPersonDetails={setPersonDetails} />} />
+          <Route path='/show:id' element={<TvShow showDetails={showDetails}/>} />
+          <Route path='/person:id' element={<Person personDetails={personDetails}/>} />
         </Route>
         <Route path='action' element={<Action />} />
         <Route path='comedy' element={<Comedy />} />
