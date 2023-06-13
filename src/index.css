@@ -14,6 +14,17 @@ html, body {
     background-color: #1f2937
 }
 
+.home-container {
+    min-height: 90vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3em;
+    padding: 2em 0;
+}
+
 /* Navbar */
 
 .navbar-container {
@@ -27,7 +38,7 @@ html, body {
 }
 
 .nav {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -43,7 +54,7 @@ html, body {
 }
 
 .nav-active {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -52,6 +63,7 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
     transition: 0.4s ease-in;
     background-color: #1f2937
 }
@@ -89,7 +101,7 @@ html, body {
 
 .hamburger-btn {
     display: block;
-    z-index: 1;
+    z-index: 100;
 }
 
 .hamburger-btn:hover {
@@ -102,6 +114,7 @@ html, body {
     height: 3px;
     margin: 3px auto;
     background-color: #fde047;
+    z-index: 100;
 }
 
 .input-container {
@@ -125,6 +138,7 @@ html, body {
     justify-content: center;
     color: #fde047;
     background-color: #111827;
+    z-index: 1;
 }
 
 .nav-input {
@@ -163,100 +177,128 @@ html, body {
 
 /* Shows */
 
-.home-container {
-    height: 90vh;
-    width: 100%;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-around; */
-    border: 3px solid purple;
-}
-
 .discover-shows-container {
+    /* min-height: 50%; */
     width: 100%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    border: 1px solid yellow;
+    align-items: center;
+    /* border: 1px solid yellow; */
+    z-index: 0;
 }
 
 .discover-shows {
-    font-size: 1rem;
+    margin-bottom: 0.2em;
+    font-size: 1.2rem;
     letter-spacing: 0.8px;
     color: white;
     text-align: center;
+    z-index: 0;
+}
+
+.discover-shows-tag {
+    margin-bottom: 1em;
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
+    color: white;
+    text-align: center;
+    z-index: 0;
 }
 
 .shows-carousel-container {
-    border: 1px solid red;
-    width: 85%;
+    /* height: 100%; */
+    width: 95%;
     margin: 0 auto;
+    z-index: 0;
 }
 
 .show-card {
-    /* width: 30%; */
+    width: 95%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    border-radius: 5px;
-    border: 1px solid blue;
+}
+
+.show-card:hover {
+    color: white;
 }
 
 .show-card-img {
     width: 100%;
     height: 200px;
+    border-radius: 10px;
 }
 
 .show-card-name {
-    font-size: 1rem;
-    font-weight: 900;
+    margin-top: 0.5em;
+    font-size: 0.8rem;
     color: #fde047;
     letter-spacing: 0.8px;
+    text-align: left;
 }
 
 /* People */
 
 .discover-people-container {
+    /* min-height: 50%; */
     width: 100%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    border: 1px solid yellow;
+    align-items: center;
+    /* border: 1px solid yellow; */
+    z-index: 0;
 }
 
 .discover-people {
+    margin-bottom: 0.2em;
     font-size: 1rem;
     letter-spacing: 0.8px;
     color: white;
     text-align: center;
+    z-index: 0;
+}
+
+.discover-people-tag {
+    margin-bottom: 1em;
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
+    color: white;
+    text-align: center;
+    z-index: 0;
 }
 
 .people-carousel-container {
-    border: 1px solid red;
-    width: 85%;
+    width: 95%;
     margin: 0 auto;
+    z-index: 0;
 }
 
 .person-card {
-    /* width: 30%; */
-    padding: 0.4em;
+    width: 95%;
+    min-height: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    border-radius: 5px;
-    border: 1px solid blue;
 }
 
 .person-card-img {
     width: 100%;
     height: 200px;
+    border-radius: 10px;
 }
 
 .person-card-name {
-    font-size: 1rem;
-    font-weight: 900;
+    margin-top: 0.5em;
+    font-size: 0.8rem;
     color: #fde047;
     letter-spacing: 0.8px;
+    text-align: left;
 }
 
 .discover-people {
-    font-size: 1rem;
+    font-size: 1.2rem;
     letter-spacing: 0.8px;
     color: white;
     text-align: center;
@@ -294,6 +336,24 @@ html, body {
 
     .search-btn {
         font-size: 1.2rem;
+    }
+
+    /* Shows */
+    .discover-shows {
+        font-size: 1.8rem;
+    }
+
+    .discover-shows-tag {
+        font-size: 1rem;
+    }
+
+    /* People */ 
+    .discover-people {
+        font-size: 1.8rem;
+    }
+
+    .discover-people-tag {
+        font-size: 1rem;
     }
 }
 
