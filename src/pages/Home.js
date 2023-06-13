@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { HashRouter, Route, Routes, } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -10,19 +9,19 @@ import PersonCard from '../components/PersonCard';
 function Home({ showDetails, setShowDetails, personDetails, setPersonDetails }) {
     const responsive = {
         superLargeDesktop: {
-          breakpoint: { max: 4000, min: 3000 },
-          items: 5
-        },
-        desktop: {
           breakpoint: { max: 3000, min: 1024 },
           items: 7
         },
-        tablet: {
+        desktop: {
           breakpoint: { max: 1024, min: 768 },
           items: 5
         },
+        tablet: {
+          breakpoint: { max: 768, min: 500 },
+          items: 4
+        },
         mobile: {
-          breakpoint: { max: 768, min: 0 },
+          breakpoint: { max: 500, min: 0 },
           items: 3
         }
       };
@@ -62,13 +61,14 @@ function Home({ showDetails, setShowDetails, personDetails, setPersonDetails }) 
     }, [])
 
     // console.log(discoverShows);
-    console.log(discoverPeople);
+    // console.log(discoverPeople);
 
 
     return (
         <main className='home-container'>
             <div className='discover-shows-container'>
               <p className='discover-shows'>Discover Shows</p>
+              <p className='discover-shows-tag'>An assortment of movies for you to discover</p>
                 <Carousel responsive={responsive} infinite={true} containerClass='shows-carousel-container' itemClass='show-card'> 
               {firstTwentyShows.map(shows => {
                return(
@@ -79,6 +79,7 @@ function Home({ showDetails, setShowDetails, personDetails, setPersonDetails }) 
             </div>
             <div className='discover-people-container'>
               <p className='discover-people'>Discover People</p>
+              <p className='discover-people-tag'>Find your new favorite actor or actress</p>
                 <Carousel responsive={responsive} infinite={true} containerClass='people-carousel-container' itemClass='person-card'>
               {firstTwentyPeople.map(people => {
               return(
