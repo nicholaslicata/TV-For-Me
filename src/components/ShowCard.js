@@ -3,12 +3,18 @@ import { Link } from 'react-router-dom';
 // Pages
 import TvShow from '../pages/TvShow';
 
-function ShowCard({ showImage, showDetails, setShowDetails, shows }) {
+function ShowCard({ showImage, showDetails, setShowDetails, shows, showNetwork, showRating }) {
 
     function updateCardDetails() {
         setShowDetails({
             name: shows.name,
             img: showImage,
+            genres: shows.genres,
+            premiered: shows.premiered,
+            ended: shows.ended,
+            network: showNetwork,
+            summary: shows.summary,
+            rating: showRating,
         })
     }
 
