@@ -29,11 +29,12 @@ function Home({ showDetails, setShowDetails, personDetails, setPersonDetails }) 
     const [discoverShows, setDiscoverShows] = useState([]);
     const [discoverPeople, setDiscoverPeople] = useState([]);
 
-    const randomNumber = Math.random() * 50;
+    const randomNumber = Math.random() * 25;
     const wholeNumber = Math.floor(randomNumber);
-    const showsApi = `https://api.tvmaze.com/shows?page=${wholeNumber}`;
-    // const showsApi = `https://api.tvmaze.com/shows?page=1`;
-    const peopleApi = `https://api.tvmaze.com/people?page=${wholeNumber}`;
+    // const showsApi = `https://api.tvmaze.com/shows?page=${wholeNumber}`;
+    const showsApi = `https://api.tvmaze.com/shows`;
+    // const peopleApi = `https://api.tvmaze.com/people?page=${wholeNumber}`;
+    const peopleApi = `https://api.tvmaze.com/people`
 
     const firstTwentyShows = discoverShows.filter((shows, index) => {
         return index < 20;
@@ -50,6 +51,7 @@ function Home({ showDetails, setShowDetails, personDetails, setPersonDetails }) 
         })
           .then(data => {
            setDiscoverShows(data);
+           console.log(data);
         })
         fetch(peopleApi)
           .then(res => {
@@ -57,27 +59,28 @@ function Home({ showDetails, setShowDetails, personDetails, setPersonDetails }) 
         })
            .then(data => {
             setDiscoverPeople(data);
+            console.log(data);
         })
     }, [])
 
-    // console.log(discoverShows);
-    // console.log(discoverPeople);
+    console.log(discoverShows);
+    console.log(discoverPeople);
 
 
     return (
         <main className='home-container'>
-            <div className='discover-shows-container'>
+            <section className='discover-shows-container'>
               <p className='discover-shows'>Discover Shows</p>
-              <p className='discover-shows-tag'>An assortment of movies for you to discover</p>
+              <p className='discover-shows-tag'>An assortment of shows for you to discover</p>
                 <Carousel responsive={responsive} infinite={true} containerClass='shows-carousel-container' itemClass='show-card'> 
               {firstTwentyShows.map(shows => {
                return(
-                <ShowCard shows={shows} showImage={shows.image} showDetails={showDetails} setShowDetails={setShowDetails} key={shows.id} />
+                <ShowCard shows={shows} showNetwork={shows.network.name} showRating={shows.rating.average} showImage={shows.image} showDetails={showDetails} setShowDetails={setShowDetails} key={shows.id} />
                )
             })}
                </Carousel>
-            </div>
-            <div className='discover-people-container'>
+            </section>
+            <section className='discover-people-container'>
               <p className='discover-people'>Discover People</p>
               <p className='discover-people-tag'>Find your new favorite actor or actress</p>
                 <Carousel responsive={responsive} infinite={true} containerClass='people-carousel-container' itemClass='person-card'>
@@ -87,7 +90,7 @@ function Home({ showDetails, setShowDetails, personDetails, setPersonDetails }) 
                )
             })}
                 </Carousel>
-            </div>
+            </section>
         </main>
     )
 }
