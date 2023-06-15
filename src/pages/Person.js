@@ -2,17 +2,17 @@ import { useEffect } from 'react';
 
 function Person({ personDetails }) {
 
-    // const personApi = `https://api.tvmaze.com/people/${personDetails.id}/castcredits?embed=show`;
+    const personApi = `https://api.tvmaze.com/people/${personDetails.id}/castcredits?embed=show`;
 
-    // useEffect(() => {
-    //     fetch(personApi)
-    //       .then(res => {
-    //        return res.json();
-    //     })
-    //       .then(data => {
-    //         console.log(data);
-    //     })
-    // }, [])  
+    useEffect(() => {
+        fetch(personApi)
+          .then(res => {
+           return res.json();
+        })
+          .then(data => {
+            console.log(data);
+        })
+    }, [])  
 
     // console.log(personDetails.id);
 
