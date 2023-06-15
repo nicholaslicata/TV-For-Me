@@ -23,6 +23,12 @@ function App() {
   const [showDetails, setShowDetails] = useState({
     name: '',
     img: '',
+    genre: '',
+    premiered: '',
+    ended: '',
+    network: '',
+    summary: '',
+    rating: '',
     id: '',
   });
   const [personDetails, setPersonDetails] = useState({
