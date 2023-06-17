@@ -51,7 +51,6 @@ function Home({ showDetails, setShowDetails, personDetails, setPersonDetails }) 
         })
           .then(data => {
            setDiscoverShows(data);
-           console.log(data);
         })
         fetch(peopleApi)
           .then(res => {
@@ -59,12 +58,11 @@ function Home({ showDetails, setShowDetails, personDetails, setPersonDetails }) 
         })
            .then(data => {
             setDiscoverPeople(data);
-            console.log(data);
         })
     }, [])
 
-    console.log(discoverShows);
-    console.log(discoverPeople);
+    // console.log(discoverShows);
+    // console.log(discoverPeople);
 
 
     return (
@@ -86,7 +84,7 @@ function Home({ showDetails, setShowDetails, personDetails, setPersonDetails }) 
                 <Carousel responsive={responsive} infinite={true} containerClass='people-carousel-container' itemClass='person-card'>
               {firstTwentyPeople.map(people => {
               return(
-                <PersonCard people={people} personImage={people.image} personDetails={personDetails} setPersonDetails={setPersonDetails} key={people.id}/>
+                <PersonCard people={people} personImage={people.image} personCountry={people.country} personDetails={personDetails} setPersonDetails={setPersonDetails} key={people.id}/>
                )
             })}
                 </Carousel>
