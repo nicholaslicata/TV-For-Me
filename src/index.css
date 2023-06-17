@@ -246,7 +246,6 @@ html, body {
     display: flex;
     flex-direction: column;
     padding: 2em 0;
-    border: 1px solid red;
 }
 
 .show-page-main-content {
@@ -420,6 +419,7 @@ html, body {
         flex-direction: row;
         padding-left: 1.5em;
         padding-right: 1.5em;
+        padding-top: 5em;
         gap: 2em;
     }
 
@@ -461,10 +461,9 @@ html, body {
 
     /* TV Show Page */
     .show-page-container{
-        min-height: 90vh;
         flex-direction: row;
-        align-items: center;
         padding: 2em;
+        padding-top: 5em;
         gap: 2em;
     }
 
@@ -491,9 +490,6 @@ html, body {
     .show-page-secondary-content {
         flex-direction: column;
         justify-content: flex-start;
-        /* height: 70vh;
-        max-height: 400px; */
-        /* border: 1px solid red; */
     }
 
     .show-page-divider-title {
