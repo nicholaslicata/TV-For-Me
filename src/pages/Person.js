@@ -1,25 +1,27 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-function Person({ personDetails }) {
+function Person({ personDetails, personShow, setPersonShow }) {
 
     const personApi = `https://api.tvmaze.com/people/${personDetails.id}/castcredits?embed=show`;
 
-    useEffect(() => {
+       useEffect(() => {
         fetch(personApi)
-          .then(res => {
-           return res.json();
+        .then(res => {
+          return res.json();
         })
-          .then(data => {
-            console.log(data);
+        .then(data => {
+          console.log(personShow);
         })
-    }, [])  
+    }, [])
 
-    // console.log(personDetails.id);
 
     return (
         <div>
-            <h1>{personDetails.name}</h1>
             <img src={!personDetails.img ? require('../assets/noImage.png') : personDetails.img.medium} className="show-img" alt={personDetails.name}></img>
+            <h1>{personDetails.name = null ? 'N/A' : personDetails.name}</h1>
+            <p>{personDetails.birthday === null ? 'N/A' : personDetails.birthday}</p>
+            <p>{personDetails.country === null ? 'N/A' : personDetails.country.name}</p>
+            <p>Know for {}</p>
         </div>
     )
 }
