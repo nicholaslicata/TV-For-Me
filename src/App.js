@@ -33,6 +33,8 @@ function App() {
   });
   const [personDetails, setPersonDetails] = useState({
     name: '', 
+    birthday: '',
+    country: '',
     img: '',
     id: '',
   })
@@ -71,7 +73,7 @@ function App() {
         <Route path='/'>
           <Route index element={<Home showDetails={showDetails} setShowDetails={setShowDetails} personDetails={personDetails} setPersonDetails={setPersonDetails} />} />
           <Route path='/show:id' element={<TvShow showDetails={showDetails}/>} />
-          <Route path='/person:id' element={<Person personDetails={personDetails}/>} />
+          <Route path='/person:id' element={<Person personDetails={personDetails} />} />
         </Route>
         <Route path='action' element={<Action />} />
         <Route path='comedy' element={<Comedy />} />
