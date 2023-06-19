@@ -20,6 +20,8 @@ import PageNotFound from './pages/PageNotFound';
 function App() {
   const [navActive, setNavActive] = useState(false);
   const [inputActive, setInputActive] = useState(false);
+  const [showsData, setShowsData] = useState([]);
+  const [peopleData, setPeopleData] = useState([]);
   const [showDetails, setShowDetails] = useState({
     name: '',
     img: '',
@@ -38,6 +40,26 @@ function App() {
     img: '',
     id: '',
   })
+
+  const showsApi = `https://api.tvmaze.com/shows`;
+  const peopleApi = `https://api.tvmaze.com/people`
+
+  useEffect(() => {
+    fetch(showsApi)
+      .then(res => {
+       return res.json();
+    })
+      .then(data => {
+       setShowsData(data);
+    })
+    fetch(peopleApi)
+      .then(res => {
+       return res.json();
+    })
+       .then(data => {
+        setPeopleData(data);
+    })
+}, [])
 
   useEffect(() => {
     window.addEventListener('resize', function() {
@@ -71,11 +93,14 @@ function App() {
       <Navbar toggleNav={toggleNav} navActive={navActive} closeNav={closeNav} toggleInput={toggleInput} inputActive={inputActive} closeInput={closeInput} />
       <Routes>
         <Route path='/'>
-          <Route index element={<Home showDetails={showDetails} setShowDetails={setShowDetails} personDetails={personDetails} setPersonDetails={setPersonDetails} />} />
-          <Route path='/show:id' element={<TvShow showDetails={showDetails}/>} />
-          <Route path='/person:id' element={<Person personDetails={personDetails} />} />
+          <Route index element={<Home showsData={showsData} peopleData={peopleData} setPeopleData={setPeopleData} showDetails={showDetails} setShowDetails={setShowDetails} setPersonDetails={setPersonDetails} />} />
+          <Route path={`/show/:name`} element={<TvShow showDetails={showDetails}/>} />
+          <Route path='/person/:id' element={<Person personDetails={personDetails} />} />
         </Route>
-        <Route path='action' element={<Action />} />
+        <Route path='action' element={<Action showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails}  />}> 
+          {/* <Route index element={<Action showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails}  />} /> */}
+          <Route path='/action/show/:name' element={<TvShow showDetails={showDetails}/>} />
+        </Route>
         <Route path='comedy' element={<Comedy />} />
         <Route path='crime' element={<Crime />} />
         <Route path='drama' element={<Drama />} />
