@@ -20,7 +20,7 @@ function ShowCard({ showImage, showDetails, setShowDetails, shows, showNetwork, 
 
    return (
     <div onClick={updateCardDetails} className='show-card'>
-      <Link to='/show:id'>
+      <Link to='/show/:name'>
         <img src={showImage ? showImage.medium : require('../assets/noImage.png')} className='show-card-img'></img>
       </Link>
       <p className='show-card-name'>{shows.name}</p>
