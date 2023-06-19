@@ -25,6 +25,30 @@ html, body {
     padding: 2em 0;
 }
 
+.genre-page-container {
+    min-height: 90vh;
+    width: 100%;
+    position: relative;
+    padding: 2em 0;
+}
+
+.genre-shows-container {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8em;
+    margin: 0 auto;
+    z-index: 0;
+}
+
+.genre-shows-container > .show-card {
+    width: 30%;
+    max-width: 210px;
+}
+
 /* Navbar */
 
 .navbar-container {
