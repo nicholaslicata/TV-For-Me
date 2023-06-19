@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // Pages
 import Person from '../pages/Person';
 
-function PersonCard({ personImage, personDetails, setPersonDetails, people, personCountry }) {
+function PersonCard({ personImage, setPersonDetails, people, personCountry }) {
     
     function updatePersonDetails() {
         setPersonDetails({
@@ -17,7 +17,7 @@ function PersonCard({ personImage, personDetails, setPersonDetails, people, pers
 
     return (
         <div onClick={updatePersonDetails} className='person-card'>
-            <Link to='/person:id'>
+            <Link to='/person/:id'>
                 <img src={!personImage ? require('../assets/noImage.png') : personImage.medium} className='person-card-img'></img>
             </Link>
             <p className='person-card-name'>{people.name}</p>
