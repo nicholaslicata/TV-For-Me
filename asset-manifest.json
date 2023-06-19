@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/TV-For-Me/static/css/main.71002e1e.css",
-    "main.js": "/TV-For-Me/static/js/main.f114c4d8.js",
+    "main.css": "/TV-For-Me/static/css/main.09325b4d.css",
+    "main.js": "/TV-For-Me/static/js/main.b3410c0a.js",
     "static/media/revicons.eot": "/TV-For-Me/static/media/revicons.a77de540a38981833f9e.eot",
     "static/media/revicons.ttf": "/TV-For-Me/static/media/revicons.57fd05d4ae650374c8de.ttf",
     "static/media/revicons.woff": "/TV-For-Me/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/TV-For-Me/index.html",
-    "main.71002e1e.css.map": "/TV-For-Me/static/css/main.71002e1e.css.map",
-    "main.f114c4d8.js.map": "/TV-For-Me/static/js/main.f114c4d8.js.map"
+    "main.09325b4d.css.map": "/TV-For-Me/static/css/main.09325b4d.css.map",
+    "main.b3410c0a.js.map": "/TV-For-Me/static/js/main.b3410c0a.js.map"
   },
   "entrypoints": [
-    "static/css/main.71002e1e.css",
-    "static/js/main.f114c4d8.js"
+    "static/css/main.09325b4d.css",
+    "static/js/main.b3410c0a.js"
   ]
 }
