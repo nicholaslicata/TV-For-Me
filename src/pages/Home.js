@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -6,7 +6,8 @@ import 'react-multi-carousel/lib/styles.css';
 import ShowCard from '../components/ShowCard';
 import PersonCard from '../components/PersonCard';
 
-function Home({ showDetails, setShowDetails, personDetails, setPersonDetails }) {
+function Home({ showsData, peopleData, showDetails, setShowDetails, setPersonDetails }) {
+
     const responsive = {
         superLargeDesktop: {
           breakpoint: { max: 3000, min: 1024 },
@@ -26,44 +27,13 @@ function Home({ showDetails, setShowDetails, personDetails, setPersonDetails }) 
         }
       };
 
-    const [discoverShows, setDiscoverShows] = useState([]);
-    const [discoverPeople, setDiscoverPeople] = useState([]);
-
-    const randomNumber = Math.random() * 25;
-    const wholeNumber = Math.floor(randomNumber);
-    // const showsApi = `https://api.tvmaze.com/shows?page=${wholeNumber}`;
-    const showsApi = `https://api.tvmaze.com/shows`;
-    // const peopleApi = `https://api.tvmaze.com/people?page=${wholeNumber}`;
-    const peopleApi = `https://api.tvmaze.com/people`
-
-    const firstTwentyShows = discoverShows.filter((shows, index) => {
+    const firstTwentyShows = showsData.filter((shows, index) => {
         return index < 20;
     })
 
-    const firstTwentyPeople = discoverPeople.filter((people, index) => {
+    const firstTwentyPeople = peopleData.filter((people, index) => {
         return index < 20;
     })
-
-    useEffect(() => {
-        fetch(showsApi)
-          .then(res => {
-           return res.json();
-        })
-          .then(data => {
-           setDiscoverShows(data);
-        })
-        fetch(peopleApi)
-          .then(res => {
-           return res.json();
-        })
-           .then(data => {
-            setDiscoverPeople(data);
-        })
-    }, [])
-
-    // console.log(discoverShows);
-    // console.log(discoverPeople);
-
 
     return (
         <main className='home-container'>
@@ -84,7 +54,7 @@ function Home({ showDetails, setShowDetails, personDetails, setPersonDetails }) 
                 <Carousel responsive={responsive} infinite={true} containerClass='people-carousel-container' itemClass='person-card'>
               {firstTwentyPeople.map(people => {
               return(
-                <PersonCard people={people} personImage={people.image} personCountry={people.country} personDetails={personDetails} setPersonDetails={setPersonDetails} key={people.id}/>
+                <PersonCard people={people} personImage={people.image} personCountry={people.country} setPersonDetails={setPersonDetails} key={people.id}/>
                )
             })}
                 </Carousel>
