@@ -1,7 +1,23 @@
+import ShowCard from '../components/ShowCard';
 
-function Romance() {
+function Romance({ showsData, showDetails, setShowDetails }) {
+
+    const romanceShows = showsData.filter((shows) => { 
+        if (shows.network && shows.genres.includes('Romance')) {
+            return shows;
+        }
+    });
+
     return (
-        <h1>Romance</h1>
+        <main className='genre-page-container'>
+           <div className='genre-shows-container'>
+           {romanceShows.map(shows => {
+            return (
+                 <ShowCard shows={shows} showNetwork={shows.network.name} showRating={shows.rating.average} showImage={shows.image} showDetails={showDetails} setShowDetails={setShowDetails} key={shows.id} />
+            )
+           })}
+          </div>
+       </main>
     )
 }
 
