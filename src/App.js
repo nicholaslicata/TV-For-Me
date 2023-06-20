@@ -20,6 +20,7 @@ import PageNotFound from './pages/PageNotFound';
 function App() {
   const [navActive, setNavActive] = useState(false);
   const [inputActive, setInputActive] = useState(false);
+  const [watchList, setWatchList] = useState([]);
   const [showsData, setShowsData] = useState([]);
   const [peopleData, setPeopleData] = useState([]);
   const [showDetails, setShowDetails] = useState({
@@ -94,18 +95,15 @@ function App() {
       <Routes>
         <Route path='/'>
           <Route index element={<Home showsData={showsData} peopleData={peopleData} setPeopleData={setPeopleData} showDetails={showDetails} setShowDetails={setShowDetails} setPersonDetails={setPersonDetails} />} />
-          <Route path={`/show/:name`} element={<TvShow showDetails={showDetails}/>} />
+          <Route path='/show/:name' element={<TvShow showDetails={showDetails}/>} />
           <Route path='/person/:id' element={<Person personDetails={personDetails} />} />
         </Route>
-        <Route path='action' element={<Action showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails}  />}> 
-          {/* <Route index element={<Action showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails}  />} /> */}
-          <Route path='/action/show/:name' element={<TvShow showDetails={showDetails}/>} />
-        </Route>
-        <Route path='comedy' element={<Comedy />} />
-        <Route path='crime' element={<Crime />} />
-        <Route path='drama' element={<Drama />} />
-        <Route path='horror' element={<Horror />} />
-        <Route path='romance' element={<Romance />} />
+        <Route path='action' element={<Action showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails}  />} />
+        <Route path='comedy' element={<Comedy showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
+        <Route path='crime' element={<Crime showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
+        <Route path='drama' element={<Drama showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
+        <Route path='horror' element={<Horror showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
+        <Route path='romance' element={<Romance showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
         <Route path='mywatchlist' element={<MyWatchlist />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
