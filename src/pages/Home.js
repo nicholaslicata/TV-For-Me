@@ -43,7 +43,7 @@ function Home({ showsData, peopleData, showDetails, setShowDetails, setPersonDet
                 <Carousel responsive={responsive} infinite={true} containerClass='shows-carousel-container' itemClass='show-card'> 
               {firstTwentyShows.map(shows => {
                return(
-                <ShowCard shows={shows} showNetwork={shows.network.name} showRating={shows.rating.average} showImage={shows.image} showDetails={showDetails} setShowDetails={setShowDetails} key={shows.id} />
+                <ShowCard shows={shows} showNetwork={shows.network.name} showRating={shows.rating.average} showImage={shows.image} showGenre={shows.genres} showDetails={showDetails} setShowDetails={setShowDetails} key={shows.id} />
                )
             })}
                </Carousel>
