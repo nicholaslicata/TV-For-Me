@@ -49,6 +49,23 @@ html, body {
     max-width: 210px;
 }
 
+.watchlist-empty {
+    text-align: center;
+    color: white;
+}
+
+.page-not-found-container {
+    min-height: 90vh;
+    width: 100%;
+    position: relative;
+    padding: 2em 0;
+}
+
+.page-not-found {
+    text-align: center;
+    color: white;
+}
+
 /* Navbar */
 
 .navbar-container {
