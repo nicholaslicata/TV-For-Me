@@ -1,8 +1,6 @@
-import { useParams } from 'react-router-dom';
-
 import AddBtn from '../components/AddBtn';
 
-function TvShow({ showDetails }) {
+function TvShow({ showDetails, handleAddShow }) {
 
      return (
         <main className='show-page-container'>
@@ -13,7 +11,7 @@ function TvShow({ showDetails }) {
               <div className='show-page-inner-container'>
                 <h1 className='show-page-title'>{showDetails.name === null ? 'N/A' : showDetails.name}</h1>
                 <p className='show-page-rating'>Rating: {showDetails.rating === null ? 'N/A' : showDetails.rating}</p>
-                <AddBtn />
+                <AddBtn handleAddShow={handleAddShow} />
                 <p className='show-page-summary'>{showDetails.summary === null ? 'N/A' : showDetails.summary.replace(/(<([^>]+)>)/gi, '')}</p>
               </div>
             </section>
