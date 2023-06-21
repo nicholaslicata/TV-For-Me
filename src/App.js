@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { HashRouter, Route, Routes, } from 'react-router-dom';
+import uniqid  from 'uniqid'
 
 // Components
 import Navbar from './components/Navbar';
@@ -26,7 +27,7 @@ function App() {
   const [showDetails, setShowDetails] = useState({
     name: '',
     img: '',
-    genre: '',
+    genres: '',
     premiered: '',
     ended: '',
     network: '',
@@ -89,13 +90,46 @@ function App() {
     setInputActive(false);
   }
 
+  function handleAddShow() {
+    console.log(watchList);
+    let isPresent = false;
+    watchList.forEach((tvShow) => {
+      if(showDetails.name === tvShow.name) {
+      isPresent = true;
+      }
+    })
+
+  const watchListShow = {
+    name: showDetails.name,
+    img: showDetails.img,
+    genres: showDetails.genres,
+    premiered: showDetails.premiered,
+    ended: showDetails.ended,
+    network: showDetails.network,
+    summary: showDetails.summary,
+    rating: showDetails.rating,
+    id: uniqid(),
+  }
+
+  if (isPresent) {
+    return;
+  } else {
+    setWatchList((prev) => {
+        return [
+            ...prev,
+                watchListShow
+        ]
+    })
+  }
+}
+
   return (
     <HashRouter>
       <Navbar toggleNav={toggleNav} navActive={navActive} closeNav={closeNav} toggleInput={toggleInput} inputActive={inputActive} closeInput={closeInput} />
       <Routes>
         <Route path='/'>
-          <Route index element={<Home showsData={showsData} peopleData={peopleData} setPeopleData={setPeopleData} showDetails={showDetails} setShowDetails={setShowDetails} setPersonDetails={setPersonDetails} />} />
-          <Route path='/show/:name' element={<TvShow showDetails={showDetails}/>} />
+          <Route index element={<Home showsData={showsData} peopleData={peopleData} setPeopleData={setPeopleData} showDetails={showDetails} setShowDetails={setShowDetails} setPersonDetails={setPersonDetails} watchList={watchList} setWatchList={setWatchList} />} />
+          <Route path='/show/:name' element={<TvShow showDetails={showDetails} watchList={watchList} setWatchList={setWatchList} handleAddShow={handleAddShow} />} />
           <Route path='/person/:id' element={<Person personDetails={personDetails} />} />
         </Route>
         <Route path='action' element={<Action showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails}  />} />
@@ -104,7 +138,7 @@ function App() {
         <Route path='drama' element={<Drama showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
         <Route path='horror' element={<Horror showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
         <Route path='romance' element={<Romance showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
-        <Route path='mywatchlist' element={<MyWatchlist />} />
+        <Route path='mywatchlist' element={<MyWatchlist showDetails={showDetails} setShowDetails={setShowDetails} watchList={watchList} />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
     </HashRouter>
