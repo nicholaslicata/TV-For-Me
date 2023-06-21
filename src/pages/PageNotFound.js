@@ -1,7 +1,9 @@
 
 function PageNotFound() {
     return (
-        <h1 className='page-not-found'>Page Not Found</h1>
+        <main className='page-not-found-container'>
+            <h1 className='page-not-found'>Page Not Found</h1>
+        </main>
     )
 }
 
