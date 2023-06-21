@@ -1,7 +1,7 @@
 
-function AddBtn() {
+function AddBtn({ handleAddShow }) {
     return (
-        <button className='add-btn'>Add To Watchlist</button>
+        <button className='add-btn' onClick={handleAddShow}>Add To Watchlist</button>
     )
 }
 
