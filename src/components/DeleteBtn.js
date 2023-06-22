@@ -1,7 +1,10 @@
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 
-function DeleteBtn({ handleDeleteShow, showsId }) {
+function DeleteBtn({ handleDeleteShow, showId }) {
     return (
-        <button onClick={() => handleDeleteShow(showsId)}>delete</button>
+        <button onClick={() => handleDeleteShow(showId)} className='delete-btn'>
+            <AiOutlineCloseCircle className='delete-icon' />
+        </button>
     )
 }
 
