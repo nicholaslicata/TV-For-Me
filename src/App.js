@@ -123,6 +123,13 @@ function App() {
   }
 }
 
+function handleDeleteShow(id) {
+  const updatedWatchList = watchList.filter((show) => show.id !== id);
+  setWatchList(updatedWatchList);
+  console.log('delete');
+  console.log(watchList);
+}
+
   return (
     <HashRouter>
       <Navbar toggleNav={toggleNav} navActive={navActive} closeNav={closeNav} toggleInput={toggleInput} inputActive={inputActive} closeInput={closeInput} />
@@ -138,7 +145,7 @@ function App() {
         <Route path='drama' element={<Drama showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
         <Route path='horror' element={<Horror showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
         <Route path='romance' element={<Romance showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
-        <Route path='mywatchlist' element={<MyWatchlist showDetails={showDetails} setShowDetails={setShowDetails} watchList={watchList} />} />
+        <Route path='mywatchlist' element={<MyWatchlist showDetails={showDetails} setShowDetails={setShowDetails} watchList={watchList} handleDeleteShow={handleDeleteShow} />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
     </HashRouter>
