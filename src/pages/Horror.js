@@ -13,7 +13,7 @@ function Horror({ showsData, showDetails, setShowDetails }) {
           <div className='genre-shows-container'>
           {horrorShows.map(shows => {
               return (
-                   <ShowCard shows={shows} showNetwork={shows.network.name} showRating={shows.rating.average} showImage={shows.image} showDetails={showDetails} setShowDetails={setShowDetails} key={shows.id} />
+                   <ShowCard shows={shows} showNetwork={shows.network.name} showRating={shows.rating.average} showImage={shows.image} showGenre={shows.genres} showDetails={showDetails} setShowDetails={setShowDetails} key={shows.id} />
               )
           })}
           </div>
