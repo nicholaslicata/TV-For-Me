@@ -1,7 +1,10 @@
- import { Link } from 'react-router-dom';
+ import { Link, useNavigate } from 'react-router-dom';
  import { FaSearch, FaTv } from 'react-icons/fa'
 
-function Navbar({ toggleNav, navActive, closeNav, toggleInput, inputActive, closeInput  }) {
+function Navbar({ toggleNav, navActive, closeNav, toggleInput, inputActive, search, handleSearch, handleSubmit }) {
+
+    const navigate = useNavigate();
+
     return (
         <header className='navbar-container'>
             <div onClick={toggleNav} className='hamburger-btn'>
@@ -16,9 +19,9 @@ function Navbar({ toggleNav, navActive, closeNav, toggleInput, inputActive, clos
             <button onClick={toggleInput} className='search-btn'>
                 <FaSearch />
             </button>
-            <div className={inputActive ? 'input-active' : 'input-container'}>
-                <input className='nav-input' type='text' placeholder='Search for shows...' required></input>
-            </div>
+            <form onSubmit={(e) => {handleSubmit(e); navigate('/show');}} className={inputActive ? 'input-active' : 'input-container'}>
+                <input onChange={handleSearch} value={search} className='nav-input' type='text' autoComplete='off' placeholder='Search for shows...' required></input>
+            </form>
             <nav className={navActive ? 'nav-active' : 'nav'}>
                 <Link onClick={closeNav} className='nav-link' to='action'>Action</Link>
                 <Link onClick={closeNav} className='nav-link' to='comedy'>Comedy</Link>
