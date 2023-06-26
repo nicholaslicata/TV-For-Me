@@ -1,8 +1,8 @@
 import AddBtn from '../components/AddBtn';
 
 function TvShow({ showDetails, handleAddShow }) {
-
-     return (
+  
+    return (
         <main className='show-page-container'>
             <section className='show-page-main-content'>
               <div className='show-page-img-container'>
