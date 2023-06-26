@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { HashRouter, Route, Routes, } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import uniqid  from 'uniqid'
 
 // Components
@@ -20,7 +20,10 @@ import PageNotFound from './pages/PageNotFound';
 
 function App() {
   const [navActive, setNavActive] = useState(false);
-  const [inputActive, setInputActive] = useState(false);
+  const [inputActive, setInputActive] = useState(false); 
+  const [search, setSearch] = useState('');
+  const [singleSearch, setSingleSearch] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [watchList, setWatchList] = useState([]);
   const [showsData, setShowsData] = useState([]);
   const [peopleData, setPeopleData] = useState([]);
@@ -44,7 +47,8 @@ function App() {
   })
 
   const showsApi = `https://api.tvmaze.com/shows`;
-  const peopleApi = `https://api.tvmaze.com/people`
+  const peopleApi = `https://api.tvmaze.com/people`;
+  const singleSearchApi = `https://api.tvmaze.com/singlesearch/shows?q=${search}`;
 
   useEffect(() => {
     fetch(showsApi)
@@ -74,6 +78,39 @@ function App() {
     })
   }, [])
 
+     useEffect(() => {
+        if (search && isSubmitted) {
+        fetch(singleSearchApi)
+          .then(res => {
+            return res.json();
+          })
+          .then(data => {
+            setSingleSearch(data);
+          })
+        }
+          setSearch('');
+          setIsSubmitted(false);
+  
+      }, [isSubmitted])
+      
+      useEffect(() => {
+        if (singleSearch) {
+            setShowDetails((prev) => {
+              return {
+                ...prev,
+               name: singleSearch.name,
+               img: singleSearch.image,
+               genres: singleSearch.genres,
+               premiered: singleSearch.premiered,
+               ended: singleSearch.ended,
+               network: singleSearch.network.name,
+               summary: singleSearch.summary,
+               rating: singleSearch.rating.average,
+              }
+          })
+          }
+      }, [singleSearch])
+
   function toggleNav() {
     setNavActive(!navActive);
   }
@@ -91,7 +128,6 @@ function App() {
   }
 
   function handleAddShow() {
-    console.log(watchList);
     let isPresent = false;
     watchList.forEach((tvShow) => {
       if(showDetails.name === tvShow.name) {
@@ -126,18 +162,25 @@ function App() {
 function handleDeleteShow(id) {
   const updatedWatchList = watchList.filter((show) => show.id !== id);
   setWatchList(updatedWatchList);
-  console.log('delete');
-  console.log(watchList);
+}
+
+function handleSearch(e) {
+  setSearch(e.target.value);
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+    setIsSubmitted(true);
 }
 
   return (
     <HashRouter>
-      <Navbar toggleNav={toggleNav} navActive={navActive} closeNav={closeNav} toggleInput={toggleInput} inputActive={inputActive} closeInput={closeInput} />
+      <Navbar toggleNav={toggleNav} navActive={navActive} closeNav={closeNav} toggleInput={toggleInput} inputActive={inputActive} closeInput={closeInput} handleSearch={handleSearch} handleSubmit={handleSubmit} />
       <Routes>
         <Route path='/'>
-          <Route index element={<Home showsData={showsData} peopleData={peopleData} setPeopleData={setPeopleData} showDetails={showDetails} setShowDetails={setShowDetails} setPersonDetails={setPersonDetails} watchList={watchList} setWatchList={setWatchList} />} />
-          <Route path='/show/:name' element={<TvShow showDetails={showDetails} watchList={watchList} setWatchList={setWatchList} handleAddShow={handleAddShow} />} />
-          <Route path='/person/:id' element={<Person personDetails={personDetails} />} />
+          <Route index element={<Home showsData={showsData} peopleData={peopleData} setPeopleData={setPeopleData} showDetails={showDetails} setShowDetails={setShowDetails} setPersonDetails={setPersonDetails} />} />
+          <Route path='/show' element={<TvShow showDetails={showDetails} handleAddShow={handleAddShow} />} />
+          <Route path='/person' element={<Person personDetails={personDetails} />} />
         </Route>
         <Route path='action' element={<Action showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails}  />} />
         <Route path='comedy' element={<Comedy showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
