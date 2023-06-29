@@ -73,12 +73,18 @@ html, body {
     min-height: 90vh;
     width: 100%;
     position: relative;
-    padding: 2em 0;
+    padding: 4em 0;
 }
 
 .page-not-found {
     text-align: center;
     color: white;
+}
+
+.show-not-found {
+    text-align: center;
+    color: white;
+    padding: 2em 0;
 }
 
 /* Navbar */
