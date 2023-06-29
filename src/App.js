@@ -24,6 +24,7 @@ function App() {
   const [search, setSearch] = useState('');
   const [singleSearch, setSingleSearch] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [watchList, setWatchList] = useState([]);
   const [showsData, setShowsData] = useState([]);
   const [peopleData, setPeopleData] = useState([]);
@@ -82,7 +83,12 @@ function App() {
         if (search && isSubmitted) {
         fetch(singleSearchApi)
           .then(res => {
+            if (res.status === 404) {
+              setIsError(true);
+            } else if (res.status === 200) {
+            setIsError(false);
             return res.json();
+            }
           })
           .then(data => {
             setSingleSearch(data);
@@ -96,6 +102,19 @@ function App() {
       useEffect(() => {
         if (singleSearch) {
             setShowDetails((prev) => {
+              if (singleSearch.network === null) {
+                return {
+                  ...prev,
+                 name: singleSearch.name,
+                 img: singleSearch.image,
+                 genres: singleSearch.genres,
+                 premiered: singleSearch.premiered,
+                 ended: singleSearch.ended,
+                 network: 'N/A',
+                 summary: singleSearch.summary,
+                 rating: singleSearch.rating.average,
+                }
+              } else {
               return {
                 ...prev,
                name: singleSearch.name,
@@ -107,6 +126,7 @@ function App() {
                summary: singleSearch.summary,
                rating: singleSearch.rating.average,
               }
+            }
           })
           }
       }, [singleSearch])
@@ -173,13 +193,15 @@ function handleSubmit(e) {
     setIsSubmitted(true);
 }
 
+console.log(singleSearch);
+
   return (
     <HashRouter>
       <Navbar toggleNav={toggleNav} navActive={navActive} closeNav={closeNav} toggleInput={toggleInput} inputActive={inputActive} closeInput={closeInput} handleSearch={handleSearch} handleSubmit={handleSubmit} />
       <Routes>
         <Route path='/'>
           <Route index element={<Home showsData={showsData} peopleData={peopleData} setPeopleData={setPeopleData} showDetails={showDetails} setShowDetails={setShowDetails} setPersonDetails={setPersonDetails} />} />
-          <Route path='/show' element={<TvShow showDetails={showDetails} handleAddShow={handleAddShow} />} />
+          <Route path='/show' element={<TvShow showDetails={showDetails} handleAddShow={handleAddShow} isError={isError} />} />
           <Route path='/person' element={<Person personDetails={personDetails} />} />
         </Route>
         <Route path='action' element={<Action showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails}  />} />
