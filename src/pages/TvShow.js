@@ -1,9 +1,11 @@
 import AddBtn from '../components/AddBtn';
 
-function TvShow({ showDetails, handleAddShow }) {
+function TvShow({ showDetails, handleAddShow, isError }) {
   
     return (
-        <main className='show-page-container'>
+        <>
+        {!isError ? 
+        (<main className='show-page-container'> 
             <section className='show-page-main-content'>
               <div className='show-page-img-container'>
                 <img src={!showDetails.img ? require('../assets/noImage.png') : showDetails.img.medium} className="show-page-img" alt={showDetails.name}></img>
@@ -33,8 +35,9 @@ function TvShow({ showDetails, handleAddShow }) {
                     <p className='show-page-divider-subtext'>{showDetails.network === null ? 'N/A' : showDetails.network}</p>
                 </div>
             </aside>
-        </main>
-    
+        </main>)
+        : (<h1 className='show-not-found'>Oops! We couldn't seem to find that show.</h1>)}
+        </>
     )
 }
 
