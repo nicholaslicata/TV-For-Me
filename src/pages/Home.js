@@ -5,7 +5,7 @@ import 'react-multi-carousel/lib/styles.css';
 import ShowCard from '../components/ShowCard';
 import PersonCard from '../components/PersonCard';
 
-function Home({ showsData, peopleData, showDetails, setShowDetails, setPersonDetails }) {
+function Home({ showsData, peopleData, showDetails, setShowDetails, setPersonDetails, }) {
 
     const responsive = {
         superLargeDesktop: {
