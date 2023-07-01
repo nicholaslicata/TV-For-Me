@@ -365,13 +365,14 @@ html, body {
 .show-page-divider-title {
     font-size: 0.8rem;
     font-weight: bold;
-    letter-spacing: 0.8px;
+    letter-spacing: 1.2px;
     margin-bottom: 0.5em;
     color: #fde047;
 }
 
 .show-page-divider-subtext {
     font-size: 0.8rem;
+    letter-spacing: 0.8px;
 }
 
 .add-btn {
@@ -460,6 +461,68 @@ html, body {
     text-align: center;
 }
 
+/* Person Page */
+
+.person-page-container {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 2em 0;
+}
+
+.person-page-text {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    /* border: 1px solid red; */
+}
+
+.person-page-name {
+    font-size: 1.2rem;
+    letter-spacing: 0.8px;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.person-page-img-container {
+    padding-bottom: 2em;
+    text-align: center;
+}
+
+.person-page-img {
+    min-height: 325px;
+    border-radius: 5px;
+    border: 2px solid #fde047;
+}
+
+.person-page-divider {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.person-page-divider-title {
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    margin-bottom: 0.5em;
+    color: #fde047;
+}
+
+.person-page-divider-subtext {
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
+}
+
+.known-for-shows {
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
+    margin-bottom: 0.2em;
+    list-style: none;
+    text-decoration: none;
+}
+
 /* Media Queries */
 
 @media screen and (min-height: 300px) and (max-height: 450px) {
@@ -488,6 +551,20 @@ html, body {
     .show-page-secondary-content {
         padding-left: 1.5em;
         flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /* Person Page */
+    .person-page-container {
+        flex-direction: row;
+        justify-content: space-around;
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        padding-top: 5em;
+        gap: 2em;
+    }
+
+    .person-page-text {
         justify-content: space-around;
     }
 }
@@ -570,6 +647,20 @@ html, body {
     .discover-people-tag {
         font-size: 1rem;
     }
+
+    /* Person Page */
+    .person-page-name {
+        font-size: 1.4rem;
+    }
+
+    .person-page-divider-title {
+        font-size: 0.9rem;
+    }
+
+    .person-page-divider-subtext {
+        font-size: 0.9rem;
+    }
+
 }
 
 @media screen and (min-width: 900px) {
@@ -577,6 +668,15 @@ html, body {
     /* TV Shows Page */
     .add-btn {
         max-width: 150px;
+    }
+
+    /* Person Page */
+    .person-page-text {
+        min-width: 40%;
+    }
+
+    .person-page-name {
+        font-size: 1.8rem;
     }
 }
 
@@ -634,6 +734,11 @@ html, body {
 
     /* TV Shows Page */
     .show-page-img {
+        min-height: 450px;
+    }
+
+    /* Person Page */
+    .person-page-img {
         min-height: 450px;
     }
 }
