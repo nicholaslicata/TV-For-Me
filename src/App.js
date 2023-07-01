@@ -198,17 +198,17 @@ function handleSubmit(e) {
       <Navbar toggleNav={toggleNav} navActive={navActive} closeNav={closeNav} toggleInput={toggleInput} inputActive={inputActive} closeInput={closeInput} handleSearch={handleSearch} handleSubmit={handleSubmit} />
       <Routes>
         <Route path='/'>
-          <Route index element={<Home showsData={showsData} peopleData={peopleData} setPeopleData={setPeopleData} showDetails={showDetails} setShowDetails={setShowDetails} personDetails={personDetails} setPersonDetails={setPersonDetails} />} />
+          <Route index element={<Home showsData={showsData} peopleData={peopleData} setPeopleData={setPeopleData} showDetails={showDetails} setShowDetails={setShowDetails} personDetails={personDetails} setPersonDetails={setPersonDetails} isError={isError} setIsError={setIsError} />} />
           <Route path='/show' element={<TvShow showDetails={showDetails} handleAddShow={handleAddShow} isError={isError} />} />
           <Route path='/person' element={<Person personDetails={personDetails} />} />
         </Route>
-        <Route path='action' element={<Action showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails}  />} />
-        <Route path='comedy' element={<Comedy showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
-        <Route path='crime' element={<Crime showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
-        <Route path='drama' element={<Drama showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
-        <Route path='horror' element={<Horror showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
-        <Route path='romance' element={<Romance showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} />} />
-        <Route path='mywatchlist' element={<MyWatchlist showDetails={showDetails} setShowDetails={setShowDetails} watchList={watchList} handleDeleteShow={handleDeleteShow} />} />
+        <Route path='action' element={<Action showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} isError={isError} setIsError={setIsError}  />} />
+        <Route path='comedy' element={<Comedy showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} isError={isError} setIsError={setIsError} />} />
+        <Route path='crime' element={<Crime showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} isError={isError} setIsError={setIsError} />} />
+        <Route path='drama' element={<Drama showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} isError={isError} setIsError={setIsError} />} />
+        <Route path='horror' element={<Horror showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} isError={isError} setIsError={setIsError} />} />
+        <Route path='romance' element={<Romance showsData={showsData} showDetails={showDetails} setShowDetails={setShowDetails} isError={isError} setIsError={setIsError} />} />
+        <Route path='mywatchlist' element={<MyWatchlist showDetails={showDetails} setShowDetails={setShowDetails} watchList={watchList} handleDeleteShow={handleDeleteShow} isError={isError} setIsError={setIsError} />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
     </HashRouter>
