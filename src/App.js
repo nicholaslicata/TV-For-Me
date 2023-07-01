@@ -193,14 +193,12 @@ function handleSubmit(e) {
     setIsSubmitted(true);
 }
 
-console.log(singleSearch);
-
   return (
     <HashRouter>
       <Navbar toggleNav={toggleNav} navActive={navActive} closeNav={closeNav} toggleInput={toggleInput} inputActive={inputActive} closeInput={closeInput} handleSearch={handleSearch} handleSubmit={handleSubmit} />
       <Routes>
         <Route path='/'>
-          <Route index element={<Home showsData={showsData} peopleData={peopleData} setPeopleData={setPeopleData} showDetails={showDetails} setShowDetails={setShowDetails} setPersonDetails={setPersonDetails} />} />
+          <Route index element={<Home showsData={showsData} peopleData={peopleData} setPeopleData={setPeopleData} showDetails={showDetails} setShowDetails={setShowDetails} personDetails={personDetails} setPersonDetails={setPersonDetails} />} />
           <Route path='/show' element={<TvShow showDetails={showDetails} handleAddShow={handleAddShow} isError={isError} />} />
           <Route path='/person' element={<Person personDetails={personDetails} />} />
         </Route>
