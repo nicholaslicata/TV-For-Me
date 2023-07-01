@@ -129,6 +129,7 @@ function App() {
             }
           })
           }
+
       }, [singleSearch])
 
       useEffect(() => {
