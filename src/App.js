@@ -25,7 +25,7 @@ function App() {
   const [singleSearch, setSingleSearch] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [watchList, setWatchList] = useState([]);
+  const [watchList, setWatchList] = useState(getInitialWatchList());
   const [showsData, setShowsData] = useState([]);
   const [peopleData, setPeopleData] = useState([]);
   const [showDetails, setShowDetails] = useState({
@@ -130,6 +130,17 @@ function App() {
           })
           }
       }, [singleSearch])
+
+      useEffect(() => {
+        const shows = JSON.stringify(watchList);
+        localStorage.setItem('watchList-shows', shows);
+      }, [watchList])
+
+  function getInitialWatchList() {
+    const shows = localStorage.getItem('watchList-shows')
+    const savedWatchList = JSON.parse(shows);
+    return savedWatchList || [];
+  }
 
   function toggleNav() {
     setNavActive(!navActive);
