@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // Pages
 import TvShow from '../pages/TvShow';
 
-function ShowCard({ showImage, showDetails, setShowDetails, shows, showNetwork, showRating, showGenre }) {
+function ShowCard({ showImage, showDetails, setShowDetails, shows, showNetwork, showRating, showGenre, isError, setIsError }) {
 
     function updateCardDetails() {
         setShowDetails({
@@ -19,7 +19,7 @@ function ShowCard({ showImage, showDetails, setShowDetails, shows, showNetwork, 
     }
 
    return (
-    <div onClick={updateCardDetails} className='show-card'>
+    <div onClick={() => { if (isError) {setIsError(false)} updateCardDetails()}} className='show-card'>
       <Link to='/show'>
         <img src={showImage ? showImage.medium : require('../assets/noImage.png')} className='show-card-img' alt={showDetails.name}></img>
       </Link>
