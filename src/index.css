@@ -50,8 +50,13 @@ html, body {
 }
 
 .watchlist-empty {
+    position: absolute;
+    top: 30vh;
+    width: 100%;
     text-align: center;
     color: white;
+    font-size: 1.2rem;
+    letter-spacing: 0.8px;
 }
 
 .delete-icon {
@@ -77,14 +82,23 @@ html, body {
 }
 
 .page-not-found {
+    position: absolute;
+    top: 30vh;
+    width: 100%;
     text-align: center;
     color: white;
+    font-size: 1.2rem;
+    letter-spacing: 0.8px;
 }
 
 .show-not-found {
+    position: absolute;
+    top: 40vh;
+    width: 100%;
     text-align: center;
     color: white;
-    padding: 2em 0;
+    font-size: 1.2rem;
+    letter-spacing: 0.8px;
 }
 
 /* Navbar */
@@ -474,7 +488,6 @@ html, body {
     display: flex;
     flex-direction: column;
     padding: 0.5em;
-    /* border: 1px solid red; */
 }
 
 .person-page-name {
@@ -661,6 +674,18 @@ html, body {
         font-size: 0.9rem;
     }
 
+    /* Watchlist */
+    .watchlist-empty {
+        font-size: 1.8rem;
+    }
+
+    .show-not-found {
+        font-size: 1.8rem;
+    }
+
+    .page-not-found {
+        font-size: 1.8rem;
+    }
 }
 
 @media screen and (min-width: 900px) {
