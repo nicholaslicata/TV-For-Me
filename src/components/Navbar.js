@@ -1,9 +1,12 @@
  import { Link, useNavigate } from 'react-router-dom';
  import { FaSearch, FaTv } from 'react-icons/fa'
+ import { useRef } from 'react';
 
 function Navbar({ toggleNav, navActive, closeNav, toggleInput, inputActive, search, handleSearch, handleSubmit }) {
 
     const navigate = useNavigate();
+
+    const inputRef = useRef(null);
 
     return (
         <header className='navbar-container'>
@@ -16,11 +19,11 @@ function Navbar({ toggleNav, navActive, closeNav, toggleInput, inputActive, sear
                 <FaTv className='tv' />
                 <Link onClick={closeNav} className='logo' to='/'>TV For Me</Link>
             </div>
-            <button onClick={toggleInput} className='search-btn'>
+            <button onClick={() => {toggleInput(); inputRef.current.focus()}} className='search-btn' aria-label='open-search-bar'>
                 <FaSearch />
             </button>
             <form onSubmit={(e) => {handleSubmit(e); navigate('/show');}} className={inputActive ? 'input-active' : 'input-container'}>
-                <input onChange={handleSearch} value={search} className='nav-input' type='text' autoComplete='off' placeholder='Search for shows...' required></input>
+                <input id='search' ref={inputRef} onChange={handleSearch} value={search} className='nav-input' type='text' autoComplete='off' placeholder='Search for shows...' required></input>
             </form>
             <nav className={navActive ? 'nav-active' : 'nav'}>
                 <Link onClick={closeNav} className='nav-link' to='action'>Action</Link>
