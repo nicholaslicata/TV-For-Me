@@ -5,7 +5,7 @@ import 'react-multi-carousel/lib/styles.css';
 import ShowCard from '../components/ShowCard';
 import PersonCard from '../components/PersonCard';
 
-function Home({ showsData, peopleData, showDetails, setShowDetails, setPersonDetails, }) {
+function Home({ showsData, peopleData, showDetails, setShowDetails, personDetails, setPersonDetails }) {
 
     const responsive = {
         superLargeDesktop: {
@@ -53,7 +53,7 @@ function Home({ showsData, peopleData, showDetails, setShowDetails, setPersonDet
                 <Carousel responsive={responsive} infinite={true} containerClass='people-carousel-container' itemClass='person-card'>
               {firstTwentyPeople.map(people => {
               return(
-                <PersonCard people={people} personImage={people.image} personCountry={people.country} setPersonDetails={setPersonDetails} key={people.id}/>
+                <PersonCard people={people} personImage={people.image} personCountry={people.country} personDetails={personDetails} setPersonDetails={setPersonDetails} key={people.id}/>
                )
             })}
                 </Carousel>
