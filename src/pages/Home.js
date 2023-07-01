@@ -5,7 +5,7 @@ import 'react-multi-carousel/lib/styles.css';
 import ShowCard from '../components/ShowCard';
 import PersonCard from '../components/PersonCard';
 
-function Home({ showsData, peopleData, showDetails, setShowDetails, personDetails, setPersonDetails }) {
+function Home({ showsData, peopleData, showDetails, setShowDetails, personDetails, setPersonDetails, isError, setIsError }) {
 
     const responsive = {
         superLargeDesktop: {
@@ -42,7 +42,7 @@ function Home({ showsData, peopleData, showDetails, setShowDetails, personDetail
                 <Carousel responsive={responsive} infinite={true} containerClass='shows-carousel-container' itemClass='show-card'> 
               {firstTwentyShows.map(shows => {
                return(
-                <ShowCard shows={shows} showNetwork={shows.network.name} showRating={shows.rating.average} showImage={shows.image} showGenre={shows.genres} showDetails={showDetails} setShowDetails={setShowDetails} key={shows.id} />
+                <ShowCard shows={shows} showNetwork={shows.network.name} showRating={shows.rating.average} showImage={shows.image} showGenre={shows.genres} showDetails={showDetails} setShowDetails={setShowDetails} isError={isError} setIsError={setIsError} key={shows.id} />
                )
             })}
                </Carousel>
