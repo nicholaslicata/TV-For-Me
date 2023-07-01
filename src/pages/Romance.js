@@ -1,6 +1,6 @@
 import ShowCard from '../components/ShowCard';
 
-function Romance({ showsData, showDetails, setShowDetails }) {
+function Romance({ showsData, showDetails, setShowDetails, isError, setIsError }) {
 
     const romanceShows = showsData.filter((shows) => { 
         if (shows.network && shows.genres.includes('Romance')) {
@@ -13,7 +13,7 @@ function Romance({ showsData, showDetails, setShowDetails }) {
            <div className='genre-shows-container'>
            {romanceShows.map(shows => {
             return (
-                 <ShowCard shows={shows} showNetwork={shows.network.name} showRating={shows.rating.average} showImage={shows.image} showGenre={shows.genres} showDetails={showDetails} setShowDetails={setShowDetails} key={shows.id} />
+                 <ShowCard shows={shows} showNetwork={shows.network.name} showRating={shows.rating.average} showImage={shows.image} showGenre={shows.genres} showDetails={showDetails} setShowDetails={setShowDetails} isError={isError} setIsError={setIsError} key={shows.id} />
             )
            })}
           </div>
